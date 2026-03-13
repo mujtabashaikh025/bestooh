@@ -312,7 +312,16 @@ function showPage(page) {
   }
 
   if (page === 'cart') renderCart();
+  
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenu) mobileMenu.classList.remove('active');
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobile-menu');
+  if (menu) menu.classList.toggle('active');
 }
 
 function openCategory(category) {
