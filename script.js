@@ -336,22 +336,27 @@ function filterByCategory(category) {
   }
 
   const el = document.getElementById('shop-products');
+  if (!el) return;
+
   // Filter by fandom or name
-  const filtered = products.filter(p =>
+  let filtered = products.filter(p =>
     p.fandom.toLowerCase() === category.toLowerCase() ||
     p.name.toLowerCase().includes(category.toLowerCase())
   );
 
-  if (filtered.length > 0) {
-    el.innerHTML = filtered.map(p => renderProductCard(p, 'openProduct')).join('');
+  // Shuffle and take 8 (as per internal script preference)
+  const shuffled = filtered.sort(() => 0.5 - Math.random());
+  const selected = shuffled.slice(0, 8);
+
+  if (selected.length > 0) {
+    el.innerHTML = selected.map(p => renderProductCard(p, 'openProduct')).join('');
   } else {
     el.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--muted);">No products found in "${category}" yet.</div>`;
   }
 
-  // Reset filter tabs on shop page
-  document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
-  const allTab = document.querySelector('.filter-tab');
-  if (allTab) allTab.classList.add('active');
+  // Reset shop filter dropdown if it exists
+  const shopSelect = document.getElementById('shop-filter-select');
+  if (shopSelect) shopSelect.value = 'all';
 
   showPage('shop');
 }
