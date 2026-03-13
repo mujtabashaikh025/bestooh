@@ -571,14 +571,11 @@
 
     .mobile-nav-links li {
       margin-bottom: 30px;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.4s ease;
     }
 
     .mobile-menu.active .mobile-nav-links li {
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
     }
 
     .mobile-menu.active .mobile-nav-links li:nth-child(1) {
@@ -595,12 +592,16 @@
 
     .mobile-nav-links a {
       font-family: var(--font-display);
-      font-size: clamp(40px, 10vw, 64px);
-      color: var(--white);
+      font-size: 48px;
+      color: #ffffff;
       text-decoration: none;
       letter-spacing: 4px;
       text-transform: uppercase;
-      transition: color 0.3s;
+      cursor: pointer;
+      display: block;
+      padding: 15px;
+      opacity: 1 !important;
+      visibility: visible !important;
     }
 
     .mobile-nav-links a:hover {
@@ -1760,7 +1761,6 @@
 
 <body>
 
-  <!-- NAVBAR -->
   <nav>
     <div class="nav-logo" onclick="showPage('home')">
       <img src="logo.png" alt="Bestooh Logo">
@@ -1799,16 +1799,26 @@
   <!-- TOAST -->
   <div class="toast" id="toast">✓ Added to cart</div>
 
-  <!-- GLOBAL MARQUEE -->
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-close" onclick="toggleMobileMenu()">✕</div>
+    <ul class="mobile-nav-links">
+      <li><a href="javascript:void(0)" onclick="showPage('home')">Home</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('shop')">Shop</a></li>
+      <li><a href="javascript:void(0)" onclick="showPage('about')">About</a></li>
+    </ul>
+  </div>
+
+  <!-- PROMO MARQUEE -->
   <div class="global-marquee">
     <div class="marquee-track">
-      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
-      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
-      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
-      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
-      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
-      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
       <!-- Duplicate for seamless loop -->
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
       <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
       <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
       <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
@@ -2606,15 +2616,6 @@
     renderHomeProducts();
     renderShopProducts();
   </script>
-  <!-- MOBILE MENU -->
-  <div class="mobile-menu" id="mobile-menu">
-    <div class="mobile-menu-close" onclick="toggleMobileMenu()">✕</div>
-    <ul class="mobile-nav-links">
-      <li><a onclick="showPage('home')">Home</a></li>
-      <li><a onclick="showPage('shop')">Shop</a></li>
-      <li><a onclick="showPage('about')">About</a></li>
-    </ul>
-  </div>
 
 </body>
 
