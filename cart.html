@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart — Bestooh</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-logo" onclick="showPage('home')">
+            <img src="logo.png" alt="Bestooh Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a onclick="showPage('home')" id="nav-home">Home</a></li>
+            <li><a onclick="showPage('shop')" id="nav-shop">Shop</a></li>
+            <li><a onclick="showPage('about')" id="nav-about">About</a></li>
+        </ul>
+        <div class="nav-actions">
+            <div class="nav-icon" onclick="showPage('shop')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+            </div>
+            <div class="nav-icon" onclick="showPage('cart')" style="position:relative">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+                <span class="cart-badge" id="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="global-marquee">
+        <div class="marquee-track">
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">✓ Added to cart</div>
+
+    <!-- ============ CART PAGE ============ -->
+    <div class="page active" id="page-cart">
+        <section id="cart-page">
+            <div class="cart-layout">
+                <div>
+                    <div class="cart-header">
+                        <h1 class="cart-title">Your Cart</h1>
+                        <span class="cart-skull">☠</span>
+                    </div>
+                    <div class="cart-table-head">
+                        <span class="cart-col-label">Item</span>
+                        <span class="cart-col-label">Qty</span>
+                        <span class="cart-col-label">Price</span>
+                    </div>
+                    <div id="cart-items-list"></div>
+                    <div class="cart-empty" id="cart-empty">
+                        <div class="cart-empty-icon">🛒</div>
+                        <h3>Your Cart is Empty</h3>
+                        <p style="margin-bottom:24px;">Time to rep your fandom.</p>
+                        <button class="btn-primary" onclick="showPage('shop')">Shop Now</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="order-summary">
+                        <div class="summary-title">Order Summary</div>
+                        <div class="summary-row"><span>Subtotal</span><span id="sum-subtotal">$0.00</span></div>
+                        <div class="summary-row"><span>Shipping</span><span id="sum-shipping">$0.00</span></div>
+                        <div class="summary-row discount" id="sum-discount-row" style="display:none">
+                            <span>Discount</span><span id="sum-discount">-$0.00</span>
+                        </div>
+                        <div class="summary-row"><span>Tax (5%)</span><span id="sum-tax">$0.00</span></div>
+                        <div class="summary-total">
+                            <span>Total</span>
+                            <span id="sum-total">$0.00</span>
+                        </div>
+                        <button class="btn-checkout">Checkout</button>
+                        <button class="btn-continue" onclick="showPage('shop')">Continue Shopping</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-inner">
+                <div>
+                    <div class="footer-brand">
+                        <img src="logo.png" alt="Bestooh" style="height:50px;width:auto;object-fit:contain;">
+                    </div>
+                    <p class="footer-tagline">We are more than a brand. We are a tribute. Combining raw street art with
+                        the
+                        depth
+                        of anime storytelling.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li onclick="showPage('shop')">Hoodies</li>
+                        <li onclick="showPage('shop')">T-Shirts</li>
+                        <li onclick="showPage('shop')">Accessories</li>
+                        <li onclick="showPage('shop')">Water Bottles</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Fandoms</h4>
+                    <ul>
+                        <li>One Piece</li>
+                        <li>Naruto</li>
+                        <li>Attack on Titan</li>
+                        <li>Demon Slayer</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Help</h4>
+                    <ul>
+                        <li onclick="showPage('about')">About Us</li>
+                        <li>Shipping Info</li>
+                        <li>Returns</li>
+                        <li>Contact</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2025 Bestooh. All rights reserved.</span>
+                <span>#BestoohNation</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — Bestooh</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="nav-logo" onclick="showPage('home')">
+            <img src="logo.png" alt="Bestooh Logo">
+        </div>
+        <ul class="nav-links">
+            <li><a onclick="showPage('home')" id="nav-home">Home</a></li>
+            <li><a onclick="showPage('shop')" id="nav-shop">Shop</a></li>
+            <li><a onclick="showPage('about')" id="nav-about" class="active">About</a></li>
+        </ul>
+        <div class="nav-actions">
+            <div class="nav-icon" onclick="showPage('shop')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.35-4.35" />
+                </svg>
+            </div>
+            <div class="nav-icon" onclick="showPage('cart')" style="position:relative">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+                <span class="cart-badge" id="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="global-marquee">
+        <div class="marquee-track">
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+            <span class="marquee-item">LIMITED OFFER : BUY ONE GET ONE FREE</span>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">✓ Added to cart</div>
+
+    <!-- ============ ABOUT PAGE ============ -->
+    <div class="page active" id="page-about">
+        <section id="about">
+            <div class="about-hero">
+                <div class="about-left">
+                    <div class="about-eyebrow">The Story</div>
+                    <h1 class="about-title">WE ARE MORE THAN A BRAND</h1>
+                    <p class="about-copy">
+                        <strong>We are a tribute.</strong> Combining raw street art with the depth of anime
+                        storytelling...
+                    </p>
+                    <p class="about-copy">
+                        Bestooh was born from a simple idea: fans deserve clothing that matches the intensity of the
+                        stories they
+                        love. Every stitch carries the legacy of the characters that shaped us.
+                    </p>
+                    <p class="about-copy">
+                        Our designs aren't licensed merch — they're original artworks, handcrafted by artists who grew
+                        up watching
+                        the same shows, feeling the same emotions.
+                    </p>
+                    <div class="about-hashtag">#BestoohNation</div>
+                </div>
+                <div class="about-right">
+                    <div class="about-collage">
+                        <div class="collage-top">
+                            <div class="collage-img" data-label="Studio Dubai"
+                                style="font-size:70px;color:rgba(255,255,255,0.2)">✍️
+                            </div>
+                            <div class="collage-img" data-label="Hand Drawn Art"
+                                style="font-size:70px;color:rgba(255,255,255,0.2)">🎨
+                            </div>
+                        </div>
+                        <div class="collage-img" data-label="Limited Drops"
+                            style="font-size:100px;color:rgba(255,255,255,0.2); border-top: 1px solid var(--border)">
+                            🧥
+                            <div class="about-brand-stamp"><img src="logo.png" alt="Bestooh"
+                                    style="height:80px; width:auto; opacity:0.8; filter: drop-shadow(0 0 10px rgba(224,16,16,0.4));">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-stats">
+                <div class="stat">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Unique Designs</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">12K+</div>
+                    <div class="stat-label">Happy Fans</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Fandoms Covered</div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="footer-inner">
+                <div>
+                    <div class="footer-brand">
+                        <img src="logo.png" alt="Bestooh" style="height:50px;width:auto;object-fit:contain;">
+                    </div>
+                    <p class="footer-tagline">We are more than a brand. We are a tribute. Combining raw street art with
+                        the
+                        depth
+                        of anime storytelling.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li onclick="showPage('shop')">Hoodies</li>
+                        <li onclick="showPage('shop')">T-Shirts</li>
+                        <li onclick="showPage('shop')">Accessories</li>
+                        <li onclick="showPage('shop')">Water Bottles</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Fandoms</h4>
+                    <ul>
+                        <li>One Piece</li>
+                        <li>Naruto</li>
+                        <li>Attack on Titan</li>
+                        <li>Demon Slayer</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Help</h4>
+                    <ul>
+                        <li onclick="showPage('about')">About Us</li>
+                        <li>Shipping Info</li>
+                        <li>Returns</li>
+                        <li>Contact</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2025 Bestooh. All rights reserved.</span>
+                <span>#BestoohNation</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

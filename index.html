@@ -8,6 +8,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
     @font-face {
       font-family: 'Rushon Ground';
@@ -184,7 +185,7 @@
     /* === HERO === */
     #hero {
       min-height: 100vh;
-      padding-top: 80px;
+      padding-top: 0;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -496,9 +497,29 @@
       }
     }
 
+    /* === GLOBAL MARQUEE === */
+    .global-marquee {
+      position: fixed;
+      top: 80px;
+      /* Below nav */
+      left: 0;
+      right: 0;
+      z-index: 999;
+      height: 40px;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .global-marquee .marquee-track {
+      animation: marquee 30s linear infinite;
+    }
+
     /* === SHOP PAGE === */
     #shop {
-      padding: 100px 48px 60px;
+      padding: 40px 48px 60px;
       min-height: 100vh;
     }
 
@@ -578,7 +599,6 @@
       transition: transform 0.3s;
       position: relative;
       overflow: hidden;
-      group: true;
     }
 
     .product-card:hover {
@@ -717,7 +737,7 @@
 
     /* === PRODUCT DETAIL === */
     #product-detail {
-      padding: 100px 48px 60px;
+      padding: 40px 48px 60px;
       min-height: 100vh;
     }
 
@@ -919,7 +939,7 @@
 
     /* === ABOUT PAGE === */
     #about {
-      padding-top: 80px;
+      padding-top: 0;
       min-height: 100vh;
       overflow: hidden;
     }
@@ -1073,7 +1093,7 @@
 
     /* === CART PAGE === */
     #cart-page {
-      padding: 100px 48px 60px;
+      padding: 40px 48px 60px;
       min-height: 100vh;
     }
 
@@ -1465,7 +1485,7 @@
       #shop,
       #product-detail,
       #cart-page {
-        padding: 100px 20px 40px;
+        padding: 40px 20px 40px;
       }
 
       .page-header {
@@ -1512,6 +1532,135 @@
         border-bottom: 1px solid var(--border);
       }
     }
+
+    /* === CATEGORY SECTION === */
+    .category-section {
+      padding: 60px 48px;
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .category-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .category-dropdown-wrap {
+      position: relative;
+      min-width: 200px;
+    }
+
+    .category-select {
+      width: 100%;
+      background: #111;
+      color: var(--white);
+      border: 1px solid var(--border);
+      padding: 12px 20px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      appearance: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .category-select:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 15px rgba(224, 16, 16, 0.2);
+    }
+
+    .category-dropdown-wrap::after {
+      content: '▼';
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 10px;
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .category-card {
+      position: relative;
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid var(--border);
+      background: #111;
+    }
+
+    .category-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--red);
+      box-shadow: 0 10px 30px rgba(224, 16, 16, 0.2);
+    }
+
+    .category-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+      filter: grayscale(0.5);
+    }
+
+    .category-card:hover .category-img {
+      transform: scale(1.1);
+      filter: grayscale(0);
+    }
+
+    .category-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+      z-index: 2;
+    }
+
+    .category-name {
+      font-family: var(--font-display);
+      font-size: 18px;
+      letter-spacing: 1px;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1024px) {
+      .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .category-section {
+        padding: 40px 20px;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .category-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+    }
   </style>
 </head>
 
@@ -1548,6 +1697,25 @@
 
   <!-- TOAST -->
   <div class="toast" id="toast">✓ Added to cart</div>
+
+  <!-- GLOBAL MARQUEE -->
+  <div class="global-marquee">
+    <div class="marquee-track">
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+      <span class="marquee-item">LIMITED OFFER : BUY 1 GET ONE FREE</span>
+    </div>
+  </div>
 
   <!-- ============ HOME PAGE ============ -->
   <div class="page active" id="page-home">
@@ -1646,18 +1814,125 @@
       </div>
     </div>
 
-    <!-- Featured Products on Home -->
-    <section
-      style="padding: 80px 48px; background: url('Banner/bg-spider.png') no-repeat center; background-size: contain; position: relative;">
-      <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;">
+    <!-- SHOP BY CATEGORY -->
+    <section class="category-section">
+      <div class="category-header">
         <div>
           <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;">
-            New Arrivals</div>
-          <h2 class="section-title">Latest <span>Drops</span></h2>
+            Browse Collections</div>
+          <h2 class="section-title">Shop by <span>Category</span></h2>
         </div>
-        <button class="btn-secondary" onclick="showPage('shop')">View All →</button>
+        <div class="category-dropdown-wrap">
+          <select class="category-select" onchange="filterByCategory(this.value)">
+            <option value="all">All Categories</option>
+            <option value="AOT">AOT</option>
+            <option value="Baki">Baki</option>
+            <option value="Berserk">Berserk</option>
+            <option value="Dandadan">Dandadan</option>
+            <option value="Demon Slayer">Demon Slayer</option>
+            <option value="Ippo">Ippo</option>
+            <option value="Hunter X Hunter">Hunter X Hunter</option>
+            <option value="JJK">Jujutsu Kaisen</option>
+            <option value="Konan">Konan</option>
+            <option value="My Hero Academia">My Hero Academia</option>
+            <option value="Naruto">Naruto</option>
+            <option value="One piece">One piece</option>
+            <option value="Solo leveling">Solo leveling</option>
+          </select>
+        </div>
       </div>
-      <div class="products-grid" id="home-products"></div>
+      <div class="category-grid">
+        <div class="category-card" onclick="openCategory('One Piece')">
+          <img src="Category/one_piece.jpg" class="category-img" alt="One Piece">
+          <div class="category-overlay">
+            <div class="category-name">One Piece</div>
+          </div>
+        </div>
+        <div class="category-card" onclick="openCategory('Naruto')">
+          <img src="Category/naruto.jpg" class="category-img" alt="Naruto">
+          <div class="category-overlay">
+            <div class="category-name">Naruto</div>
+          </div>
+        </div>
+        <div class="category-card" onclick="openCategory('AOT')">
+          <img src="Category/aot.jpg" class="category-img" alt="AOT">
+          <div class="category-overlay">
+            <div class="category-name">AOT</div>
+          </div>
+        </div>
+        <div class="category-card" onclick="openCategory('Demon Slayer')">
+          <img src="Category/demon_slayer.jpg" class="category-img" alt="Demon Slayer">
+          <div class="category-overlay">
+            <div class="category-name">Demon Slayer</div>
+          </div>
+        </div>
+        <div class="category-card" onclick="openCategory('JJK')">
+          <img src="Category/jjk.jpg" class="category-img" alt="JJK">
+          <div class="category-overlay">
+            <div class="category-name">JJK</div>
+          </div>
+        </div>
+        <div class="category-card" onclick="openCategory('Berserk')">
+          <img src="Category/berserk.png" class="category-img" alt="Berserk">
+          <div class="category-overlay">
+            <div class="category-name">Berserk</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRAB A DEAL -->
+    <section class="deal-section">
+      <div class="deal-header">
+        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;">
+          Exclusive Offers</div>
+        <h2 class="section-title">Grab the <span>Deal</span></h2>
+      </div>
+      <div class="deal-row">
+        <div class="deal-item" onclick="showPage('shop')">
+          <img src="new_arival/n-a-1.png" alt="Deal 1">
+          <div class="deal-overlay">
+            <div class="deal-tag">HOT DEAL</div>
+          </div>
+        </div>
+        <div class="deal-item" onclick="showPage('shop')">
+          <img src="new_arival/n-a-2.png" alt="Deal 2">
+          <div class="deal-overlay">
+            <div class="deal-tag">LIMITED</div>
+          </div>
+        </div>
+        <div class="deal-item" onclick="showPage('shop')">
+          <img src="new_arival/n-a-3.png" alt="Deal 3">
+          <div class="deal-overlay">
+            <div class="deal-tag">BEST SELLER</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products on Home -->
+    <!-- <section
+      style="padding: 80px 48px; background: url('Banner/bg-spider.png') no-repeat center; background-size: contain; position: relative;"> -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;">
+      <div>
+        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;">
+          New Arrivals</div>
+        <h2 class="section-title">Latest <span>Drops</span></h2>
+      </div>
+      <button class="btn-secondary" onclick="showPage('shop')">View All →</button>
+    </div>
+    <div class="products-grid" id="home-products"></div>
+    </section>
+
+    <!-- INSTAGRAM FEED -->
+    <section class="insta-section" style="padding: 60px 48px; border-top: 1px solid var(--border);">
+      <div style="margin-bottom: 40px; text-align: center;">
+        <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px;">Follow Us</div>
+        <h2 class="section-title">Instagram <span>Feed</span></h2>
+      </div>
+      <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
+      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <div class="elfsight-app-c6fef08d-9936-4af2-9f8c-1bacb13655c4" data-elfsight-app-lazy></div>
     </section>
 
     <footer>
@@ -1713,11 +1988,13 @@
             All Products</div>
           <h1 class="page-title">The <span style="color:var(--red)">Collection</span></h1>
         </div>
-        <div class="filter-tabs">
-          <button class="filter-tab active" onclick="filterProducts('all', this)">All</button>
-          <button class="filter-tab" onclick="filterProducts('hoodie', this)">Hoodies</button>
-          <button class="filter-tab" onclick="filterProducts('bottle', this)">Bottles</button>
-          <button class="filter-tab" onclick="filterProducts('tee', this)">Tees</button>
+        <div class="category-dropdown-wrap" style="min-width: 160px;">
+          <select class="category-select" onchange="filterProducts(this.value)" id="shop-filter-select">
+            <option value="all">All Products</option>
+            <option value="hoodie">Hoodies</option>
+            <option value="bottle">Bottles</option>
+            <option value="tee">Tees</option>
+          </select>
         </div>
       </div>
       <div class="products-grid" id="shop-products"></div>
@@ -1976,9 +2253,7 @@
       el.innerHTML = filtered.map(p => renderProductCard(p, 'openProduct')).join('');
     }
 
-    function filterProducts(type, btn) {
-      document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    function filterProducts(type) {
       renderShopProducts(type);
     }
 
@@ -2169,6 +2444,42 @@
       t.classList.add('show');
       clearTimeout(toastTimer);
       toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+    }
+
+    // =========== CATEGORY FILTERING ===========
+    function openCategory(category) {
+      filterByCategory(category);
+    }
+
+    function filterByCategory(category) {
+      const el = document.getElementById('shop-products');
+      if (!el) return;
+
+      let filtered;
+      if (category === 'all') {
+        filtered = [...products];
+      } else {
+        filtered = products.filter(p =>
+          p.fandom.toLowerCase() === category.toLowerCase() ||
+          p.name.toLowerCase().includes(category.toLowerCase())
+        );
+      }
+
+      // Shuffle and take 8
+      const shuffled = filtered.sort(() => 0.5 - Math.random());
+      const selected = shuffled.slice(0, 8);
+
+      if (selected.length > 0) {
+        el.innerHTML = selected.map(p => renderProductCard(p, 'openProduct')).join('');
+      } else {
+        el.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--muted);">No products found in "${category}" yet.</div>`;
+      }
+
+      // Reset shop filter dropdown
+      const shopSelect = document.getElementById('shop-filter-select');
+      if (shopSelect) shopSelect.value = 'all';
+
+      showPage('shop');
     }
 
     // =========== NAVIGATION ===========
